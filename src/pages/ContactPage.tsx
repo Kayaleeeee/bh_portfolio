@@ -1,13 +1,17 @@
 import { PageContainer } from "components/PageContainer";
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
-import { Device } from "utils/viewPort";
+import { Device, getWidth } from "utils/viewPort";
 
 const YoutubeIcon = require("images/youtube-color-icon.svg").ReactComponent;
 const VimeoIcon = require("images/vimeo-square-icon.svg").ReactComponent;
 const InstagramIcon = require("images/instagram-icon.svg").ReactComponent;
 
 const ContactPage = () => {
+  const isMobile = useMemo(() => {
+    return getWidth() < 700;
+  }, []);
+
   return (
     <PageContainer>
       <CenterContainer>
@@ -22,17 +26,21 @@ const ContactPage = () => {
           >
             <YoutubeIcon
               style={{
-                width: "50px",
+                width: isMobile ? "38px" : "50px",
                 fill: "#fff",
                 filter: "brightness(0) invert(1)",
               }}
             />
           </Link>
           <Link href="https://vimeo.com/user192123038" target="_blank">
-            <VimeoIcon style={{ width: "40px", fill: "#fff" }} />
+            <VimeoIcon
+              style={{ width: isMobile ? "30px" : "40px", fill: "#fff" }}
+            />
           </Link>
           <Link href="https://www.instagram.com/minbyeonghwi/" target="_blank">
-            <InstagramIcon style={{ width: "40px", fill: "#fff" }} />
+            <InstagramIcon
+              style={{ width: isMobile ? "30px" : "40px", fill: "#fff" }}
+            />
           </Link>
         </IconContainer>
         <Email>alsqudgnl@naver.com</Email>
@@ -91,6 +99,10 @@ const IconContainer = styled.div`
 const Link = styled.a`
   text-decoration: none;
   margin: 0 15px;
+
+  @media screen and ${Device.mobile} {
+    margin: 0 10px;
+  }
 `;
 
 const ProfileImage = styled.img`
@@ -102,6 +114,7 @@ const Email = styled.div`
 
   @media screen and ${Device.mobile} {
     font-size: 1rem;
+    margin-left: 10px;
   }
 `;
 
@@ -111,5 +124,6 @@ const Phone = styled.div`
 
   @media screen and ${Device.mobile} {
     font-size: 1rem;
+    margin-left: 10px;
   }
 `;
