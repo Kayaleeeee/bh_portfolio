@@ -1,3 +1,4 @@
+import { Loader } from "components/Loader";
 import React, { useEffect, useRef } from "react";
 import { HTMLAttributes } from "react";
 import styled from "styled-components";
@@ -5,9 +6,16 @@ import styled from "styled-components";
 type Props = {
   fetchMore: () => void;
   isLast: boolean;
+  isLoading: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-const InfiniteScroll = ({ fetchMore, children, isLast, ...props }: Props) => {
+const InfiniteScroll = ({
+  fetchMore,
+  children,
+  isLast,
+  isLoading,
+  ...props
+}: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,7 +23,7 @@ const InfiniteScroll = ({ fetchMore, children, isLast, ...props }: Props) => {
     const intersectionObserver = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry: IntersectionObserverEntry) => {
-          if (entry.isIntersecting && !isLast) {
+          if (entry.isIntersecting && !isLast && !isLoading) {
             fetchMore();
           }
         });
@@ -34,12 +42,17 @@ const InfiniteScroll = ({ fetchMore, children, isLast, ...props }: Props) => {
         intersectionObserver.unobserve(target);
       }
     };
-  }, [ref, fetchMore, isLast]);
+  }, [ref, fetchMore, isLast, isLoading]);
 
   return (
     <Wrapper {...props}>
       {children}
-      {!isLast && <ScrollTriger ref={ref} />}
+      {isLoading && (
+        <LoaderWrapper>
+          <Loader />
+        </LoaderWrapper>
+      )}
+      {!isLast && !isLoading && <ScrollTriger ref={ref} />}
     </Wrapper>
   );
 };
@@ -55,4 +68,11 @@ const Wrapper = styled.div`
 const ScrollTriger = styled.div`
   width: 100%;
   height: 50px;
+`;
+
+const LoaderWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

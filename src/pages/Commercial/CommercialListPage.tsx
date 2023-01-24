@@ -11,6 +11,8 @@ export const CommercialListPage = () => {
   const navigate = useNavigate();
   const [portfolioList, setPortfolioList] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
+
   const [isLast, setIsLast] = useState(false);
   const [searchParams, setSearchParams] = useState({
     per_page: 6,
@@ -24,6 +26,7 @@ export const CommercialListPage = () => {
   const fetchMore = useCallback(
     (searchParams) => {
       setIsLoading(true);
+
       getVimeoDataList(searchParams)
         .then(({ data }) => {
           if (data.data.length <= 0 || portfolioList.length >= data.total) {
@@ -36,15 +39,24 @@ export const CommercialListPage = () => {
           setPortfolioList((prev) => prev.concat(data.data));
         })
         .catch(() => setIsLast(true))
-        .finally(() => setIsLoading(false));
+        .finally(() => {
+          setIsInitialLoading(false);
+          setIsLoading(false);
+        });
     },
     [portfolioList]
   );
 
   return (
     <PageContainer>
+      {isInitialLoading && (
+        <LoaderWrapper>
+          <Loader />
+        </LoaderWrapper>
+      )}
       <InfiniteScroll
         isLast={isLast}
+        isLoading={isLoading && !isInitialLoading}
         fetchMore={() => {
           if (!isLoading) fetchMore(searchParams);
         }}

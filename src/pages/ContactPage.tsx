@@ -37,7 +37,7 @@ const ContactPage = () => {
         </IconContainer>
         <Email>alsqudgnl@naver.com</Email>
         <Phone>010-3053-6549</Phone>
-        <ProfileImage src={require("../images/profile-picture.jpeg")} />
+        <ProfileImage src={require("images/profile-picture.jpeg")} />
       </CenterContainer>
     </PageContainer>
   );
