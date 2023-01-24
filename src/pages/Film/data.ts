@@ -4,7 +4,7 @@ type FilmDataType = {
 };
 
 const film_1_data = {
-  title: "있는 힘껏",
+  title: "있는 힘껏 (2021)",
   sceenImageSrcList: [
     "/film_1/1.jpeg",
     "/film_1/2.jpeg",
@@ -26,7 +26,7 @@ const film_1_data = {
 };
 
 const film_2_data = {
-  title: "불안은 영혼을 잠식한다",
+  title: "불안은 영혼을 잠식한다 (2022)",
   sceenImageSrcList: [
     "/film_2/1.png",
     "/film_2/2.png",
@@ -48,7 +48,7 @@ const film_2_data = {
 };
 
 const film_3_data = {
-  title: "황금마차 떠났다",
+  title: "황금마차 떠났다 (2022)",
   sceenImageSrcList: [
     "/film_3/1.png",
     "/film_3/3.png",
@@ -69,7 +69,7 @@ const film_3_data = {
 };
 
 const film_4_data = {
-  title: "너의 기억",
+  title: "너의 기억 (2020)",
   sceenImageSrcList: [
     "/film_4/1.jpeg",
     "/film_4/2.jpeg",
@@ -91,7 +91,7 @@ const film_4_data = {
 };
 
 const film_5_data = {
-  title: "출장",
+  title: "출장 (2019)",
   sceenImageSrcList: [
     "/film_5/1.jpeg",
     "/film_5/2.jpeg",

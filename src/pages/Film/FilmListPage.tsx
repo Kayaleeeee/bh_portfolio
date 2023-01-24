@@ -59,19 +59,27 @@ const ThumnailImage = styled.img`
   height: auto;
 
   &:nth-child(1) {
-    width: 50%;
+    width: calc((100% - 2rem) / 3);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
   }
 
   &:nth-child(2) {
-    width: 50%;
+    width: calc((100% - 2rem) / 3);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
   }
 
   &:nth-child(3) {
-    width: 50%;
+    width: calc((100% - 2rem) / 3);
+    margin-bottom: 1rem;
   }
 
   &:nth-child(4) {
-    grid-column-start: 2;
-    grid-column-end: 4;
+    margin-bottom: 1rem;
+  }
+
+  &:nth-child(5) {
+    margin-bottom: 1rem;
   }
 `;
