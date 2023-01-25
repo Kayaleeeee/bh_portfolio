@@ -65,11 +65,13 @@ export const CommercialListPage = () => {
           {portfolioList.map((portfolio) => {
             const videoId: number = portfolio.uri.replace("/videos/", "");
             return (
-              <VideoThumnail
+              <VideoItem
                 key={portfolio.name}
                 onClick={() => onClickThumnail(videoId)}
-                src={portfolio.pictures.sizes[3].link}
-              />
+              >
+                <VideoThumnail src={portfolio.pictures.sizes[0].link} />
+                <VideoTitle>{portfolio.name}</VideoTitle>
+              </VideoItem>
             );
           })}
         </VideoList>
@@ -85,9 +87,9 @@ const VideoList = styled.div`
   justify-content: center;
 `;
 
-const VideoThumnail = styled.img`
-  width: 100%;
-  max-width: 500px;
+const VideoItem = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-bottom: 3rem;
 
   &:nth-child(odd) {
@@ -101,6 +103,24 @@ const VideoThumnail = styled.img`
       margin-right: 0rem;
     }
   }
+`;
+
+const VideoTitle = styled.div`
+  color: white;
+  font-size: 1rem;
+  margin-top: 1rem;
+
+  @media screen and ${Device.mobile} {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+`;
+
+const VideoThumnail = styled.img`
+  width: 100%;
+  max-width: 500px;
+  max-height: calc(500px * 0.56);
+  object-fit: cover;
 `;
 
 const LoaderWrapper = styled.div`
