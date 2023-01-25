@@ -14,7 +14,7 @@ export const getVimeoDataList = (searchParams: {
       headers: { Authorization: `bearer ${VIMEO_AUTH_TOKEON}` },
     })
     .get(
-      `${VIMEO_BASE_URL}/channels/${VIMEO_CHANNEL_ID}/videos?per_page=${searchParams.per_page}&page=${searchParams.page}`
+      `${VIMEO_BASE_URL}/channels/${VIMEO_CHANNEL_ID}/videos?per_page=${searchParams.per_page}&page=${searchParams.page}&sort=manual`
     );
 };
 
