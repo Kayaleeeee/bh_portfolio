@@ -1,3 +1,4 @@
+import { Image } from "components/Image";
 import React, { useState, useEffect, useMemo, PropsWithChildren } from "react";
 import styled from "styled-components";
 
@@ -32,9 +33,11 @@ export const ImageTransitor: React.FunctionComponent<
       <ChildrenWrapper>{children}</ChildrenWrapper>
       {imageList.map((image, index) => {
         return (
-          <Image
+          <HomeImage
             key={image}
             src={require(`images/home/${image}`) || ""}
+            srcSet={require(`images/home/${image}`) || ""}
+            alt={`home image ${index}`}
             style={{ opacity: currentImageIndex === index ? 1 : 0 }}
           />
         );
@@ -57,7 +60,7 @@ const ChildrenWrapper = styled.div`
   top: 0;
 `;
 
-const Image = styled.img`
+const HomeImage = styled(Image)`
   position: absolute;
   left: 0;
   top: 0;
