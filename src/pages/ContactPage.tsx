@@ -1,3 +1,4 @@
+import { Image } from "components/Image";
 import { PageContainer } from "components/PageContainer";
 import React, { useMemo } from "react";
 import styled from "styled-components";
@@ -45,7 +46,11 @@ const ContactPage = () => {
         </IconContainer>
         <Email>alsqudgnl@naver.com</Email>
         <Phone>010-3053-6549</Phone>
-        <ProfileImage src={require("images/profile-picture.jpeg")} />
+        <ProfileImage
+          srcSet={require("images/profile-picture.webp")}
+          src={require("images/profile-picture.webp")}
+          alt="profile image"
+        />
       </CenterContainer>
     </PageContainer>
   );
@@ -105,7 +110,7 @@ const Link = styled.a`
   }
 `;
 
-const ProfileImage = styled.img`
+const ProfileImage = styled(Image)`
   width: 100%;
 `;
 
