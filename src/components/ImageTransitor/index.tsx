@@ -21,7 +21,7 @@ export const ImageTransitor: React.FunctionComponent<
       } else {
         setCurrentImageIndex(currentImageIndex + 1);
       }
-    }, 4000);
+    }, 2500);
   }, [imageList, currentImageIndex]);
 
   if (imageList.length === 0 || !currentImageSrc) {
@@ -68,8 +68,8 @@ const HomeImage = styled(Image)`
   height: 100vh;
   object-fit: cover;
 
-  -webkit-transition: opacity 4s ease-in-out;
-  -moz-transition: opacity 4s ease-in-out;
-  -o-transition: opacity 4s ease-in-out;
-  transition: opacity 4s ease-in-out;
+  -webkit-transition: opacity 2.5s ease-in-out;
+  -moz-transition: opacity 2.5s ease-in-out;
+  -o-transition: opacity 2.5s ease-in-out;
+  transition: opacity 2.5s ease-in-out;
 `;

@@ -11,10 +11,10 @@ const HomePage = () => {
   const imageList = useMemo(() => {
     if (isMobile) {
       return [
+        "mobile/4.webp",
         "mobile/1.webp",
         "mobile/2.webp",
         "mobile/3.webp",
-        "mobile/4.webp",
         "mobile/5.webp",
         "mobile/6.webp",
         "mobile/7.webp",
@@ -22,10 +22,10 @@ const HomePage = () => {
       ];
     }
     return [
+      "4.png",
       "1.webp",
       "2.webp",
       "3.png",
-      "4.png",
       "5.webp",
       "6.png",
       "7.png",
