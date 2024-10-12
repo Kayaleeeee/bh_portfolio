@@ -1,22 +1,52 @@
 import styled from "styled-components";
 import { getVimeoVideo } from "apis/vimeo";
 import { PageContainer } from "components/PageContainer";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Device } from "utils/viewPort";
+import { SAMSNUNG_MAIN_ID, SAMSUNG_FILTER_LIST } from "./CommercialListPage";
 
 export const CommercialDetailPage = () => {
   const { id } = useParams();
   const [data, setData] = useState<any>();
+  const [samsungDataList, setSamsungDataList] = useState<any>([]);
+
+  const isSamsungMain = useMemo(() => {
+    if (!id) return false;
+    return id.toString() === SAMSNUNG_MAIN_ID;
+  }, [id]);
+
+  const fetchVideoData = async (id: string) => {
+    try {
+      const { data } = await getVimeoVideo(id);
+      setData(data);
+    } catch (e) {
+      console.log(e);
+      setData(null);
+    }
+  };
+
+  const fetchSamsungList = async () => {
+    const dataList = await Promise.all(
+      SAMSUNG_FILTER_LIST.map(async (id) => {
+        const { data } = await getVimeoVideo(id);
+        return data;
+      })
+    );
+
+    setSamsungDataList(dataList);
+  };
 
   useEffect(() => {
     if (!id) {
       return;
     }
 
-    getVimeoVideo(id).then(({ data }) => {
-      setData(data);
-    });
+    if (isSamsungMain) {
+      fetchSamsungList();
+    }
+
+    fetchVideoData(id);
   }, [id]);
 
   return (
@@ -24,11 +54,37 @@ export const CommercialDetailPage = () => {
       {!data ? (
         <></>
       ) : (
-        <Wrapper>
-          <VideoTitle>{data.name}</VideoTitle>
-          <VimeoEmbed dangerouslySetInnerHTML={{ __html: data.embed.html }} />
-          <VideoDescription>{data.description}</VideoDescription>
-        </Wrapper>
+        <>
+          <Wrapper>
+            <VideoTitle>
+              {isSamsungMain ? "SAMSUNG Galaxy Buds3" : data.name}
+            </VideoTitle>
+            <VimeoEmbed dangerouslySetInnerHTML={{ __html: data.embed.html }} />
+
+            {!isSamsungMain && (
+              <VideoDescription>{data.description}</VideoDescription>
+            )}
+          </Wrapper>
+          {samsungDataList.length > 0 && (
+            <div>
+              {samsungDataList.map((data) => {
+                return (
+                  <Wrapper
+                    key={data.name}
+                    style={{
+                      marginTop: "4rem",
+                    }}
+                  >
+                    <VimeoEmbed
+                      dangerouslySetInnerHTML={{ __html: data.embed.html }}
+                    />
+                  </Wrapper>
+                );
+              })}
+              <VideoDescription>{data.description || ""}</VideoDescription>
+            </div>
+          )}
+        </>
       )}
     </PageContainer>
   );

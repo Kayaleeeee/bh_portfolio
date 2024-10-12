@@ -7,6 +7,17 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Device } from "utils/viewPort";
 
+export const SAMSUNG_FILTER_LIST = [
+  "1018930545",
+  "1018930962",
+  "1018931272",
+  "1018924859",
+  "1018929441",
+  "1018930036",
+];
+
+export const SAMSNUNG_MAIN_ID = "1018930220";
+
 export const CommercialListPage = () => {
   const navigate = useNavigate();
   const [portfolioList, setPortfolioList] = useState<any[]>([]);
@@ -64,6 +75,8 @@ export const CommercialListPage = () => {
         <VideoList>
           {portfolioList.map((portfolio) => {
             const videoId: number = portfolio.uri.replace("/videos/", "");
+            if (SAMSUNG_FILTER_LIST.includes(videoId.toString())) return null;
+
             return (
               <VideoItem
                 key={portfolio.name}
@@ -84,6 +97,7 @@ const VideoList = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  gap: 16px;
   justify-content: center;
 `;
 
@@ -92,16 +106,8 @@ const VideoItem = styled.div`
   flex-direction: column;
   margin-bottom: 3rem;
 
-  &:nth-child(odd) {
-    margin-right: 3rem;
-  }
-
   @media screen and ${Device.mobile} {
     margin-bottom: 2rem;
-
-    &:nth-child(odd) {
-      margin-right: 0rem;
-    }
   }
 `;
 
