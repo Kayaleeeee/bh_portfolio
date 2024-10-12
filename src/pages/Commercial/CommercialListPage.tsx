@@ -17,6 +17,7 @@ export const SAMSUNG_FILTER_LIST = [
 ];
 
 export const SAMSNUNG_MAIN_ID = "1018930220";
+export const SAMSUMG_BUDS_TITLE = "SAMSUNG Galaxy Buds3 Pro";
 
 export const CommercialListPage = () => {
   const navigate = useNavigate();
@@ -83,7 +84,11 @@ export const CommercialListPage = () => {
                 onClick={() => onClickThumnail(videoId)}
               >
                 <VideoThumnail src={portfolio.pictures.sizes[0].link} />
-                <VideoTitle>{portfolio.name}</VideoTitle>
+                <VideoTitle>
+                  {videoId.toString() === SAMSNUNG_MAIN_ID
+                    ? SAMSUMG_BUDS_TITLE
+                    : portfolio.name}
+                </VideoTitle>
               </VideoItem>
             );
           })}
