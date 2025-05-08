@@ -5,8 +5,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Device } from "utils/viewPort";
 import {
-  SAMSNUNG_MAIN_ID,
-  SAMSUMG_BUDS_TITLE,
+  SAMSUNG_MAIN_ID,
+  SAMSUNG_BUDS_TITLE,
   SAMSUNG_FILTER_LIST,
 } from "./CommercialListPage";
 
@@ -17,7 +17,7 @@ export const CommercialDetailPage = () => {
 
   const isSamsungMain = useMemo(() => {
     if (!id) return false;
-    return id.toString() === SAMSNUNG_MAIN_ID;
+    return id.toString() === SAMSUNG_MAIN_ID;
   }, [id]);
 
   const fetchVideoData = async (id: string) => {
@@ -61,7 +61,7 @@ export const CommercialDetailPage = () => {
         <>
           <Wrapper>
             <VideoTitle>
-              {isSamsungMain ? SAMSUMG_BUDS_TITLE : data.name}
+              {isSamsungMain ? SAMSUNG_BUDS_TITLE : data.name}
             </VideoTitle>
             <VimeoEmbed dangerouslySetInnerHTML={{ __html: data.embed.html }} />
 
