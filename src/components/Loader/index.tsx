@@ -23,10 +23,10 @@ const LoaderWrapper = styled.div`
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 64px;
-    height: 64px;
+    width: 54px;
+    height: 54px;
     margin: 8px;
-    border: 8px solid #fff;
+    border: 6px solid #fff;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
@@ -47,6 +47,7 @@ const LoaderWrapper = styled.div`
     height: 40px;
 
     div {
+      border-width: 4px;
       width: 30px;
       height: 30px;
       margin: 5px;

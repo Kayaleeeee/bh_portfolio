@@ -52,7 +52,7 @@ const InfiniteScroll = ({
           <Loader />
         </LoaderWrapper>
       )}
-      {!isLast && !isLoading && <ScrollTriger ref={ref} />}
+      {!isLast && !isLoading && <ScrollTrigger ref={ref} />}
     </Wrapper>
   );
 };
@@ -65,7 +65,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const ScrollTriger = styled.div`
+const ScrollTrigger = styled.div`
   width: 100%;
   height: 50px;
 `;
