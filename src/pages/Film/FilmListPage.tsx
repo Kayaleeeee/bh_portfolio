@@ -26,7 +26,7 @@ export const FilmListPage = () => {
     },
   ];
 
-  const onClickThumnail = (id: number) => {
+  const onClickThumbnail = (id: number) => {
     navigate(`/film/${id}`);
   };
 
@@ -35,10 +35,10 @@ export const FilmListPage = () => {
       <FilmList>
         {filmList.map((film, index) => {
           return (
-            <ThumnailImage
+            <ThumbnailImage
               key={film.name}
               src={film.src}
-              onClick={() => onClickThumnail(index + 1)}
+              onClick={() => onClickThumbnail(index + 1)}
             />
           );
         })}
@@ -54,7 +54,7 @@ const FilmList = styled.div`
   align-items: baseline;
 `;
 
-const ThumnailImage = styled.img`
+const ThumbnailImage = styled.img`
   width: 100%;
   height: auto;
 

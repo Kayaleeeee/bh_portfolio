@@ -10,10 +10,10 @@ export const Logo = () => {
     navigate("/");
   };
 
-  return <LogoContaier onClick={clickLogo}>B.H</LogoContaier>;
+  return <LogoContainer onClick={clickLogo}>B.H</LogoContainer>;
 };
 
-const LogoContaier = styled.div`
+const LogoContainer = styled.div`
   font-family: "Nanum Myeongjo", serif;
   color: #fff;
   font-size: 3rem;
