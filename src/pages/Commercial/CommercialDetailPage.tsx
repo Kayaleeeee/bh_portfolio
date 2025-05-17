@@ -51,7 +51,7 @@ export const CommercialDetailPage = () => {
     }
 
     fetchVideoData(id);
-  }, [id]);
+  }, [id, isSamsungMain]);
 
   return (
     <PageContainer>
