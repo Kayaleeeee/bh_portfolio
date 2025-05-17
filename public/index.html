@@ -7,15 +7,30 @@
     <meta name="theme-color" content="#000000" />
 
     <meta
-    name="description"
-    property="og:description"
-    content="민병휘 촬영감독"/>
-  <meta name="image" property="og:image" content="%PUBLIC_URL%/logo.png" />
-  <meta name="url" property="og:url" content="https://dop-bh.com" />
+      name="description"
+      property="og:description"
+      content="민병휘 촬영감독"
+    />
+    <meta name="image" property="og:image" content="%PUBLIC_URL%/logo.png" />
+    <meta name="url" property="og:url" content="https://dop-bh.com" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Coda+Caption&family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Coda+Caption&family=Nanum+Myeongjo:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -47,4 +62,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script src="https://cdn.amplitude.com/script/30d5be5fc93b1154706ab0ab31540b17.js"></script>
+  <script>
+    window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+    window.amplitude.init("30d5be5fc93b1154706ab0ab31540b17", {
+      fetchRemoteConfig: true,
+      autocapture: true,
+    });
+  </script>
 </html>

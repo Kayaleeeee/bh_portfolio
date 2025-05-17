@@ -31,7 +31,7 @@ export const CommercialListPage = () => {
     page: 1,
   });
 
-  const onClickThumnail = (id: number) => {
+  const onClickThumbnail = (id: number) => {
     navigate(`/commercial/${id}`);
   };
 
@@ -81,9 +81,9 @@ export const CommercialListPage = () => {
             return (
               <VideoItem
                 key={portfolio.name}
-                onClick={() => onClickThumnail(videoId)}
+                onClick={() => onClickThumbnail(videoId)}
               >
-                <VideoThumnail src={portfolio.pictures.sizes[0].link} />
+                <VideoThumbnail src={portfolio.pictures.sizes[0].link} />
                 <VideoTitle>
                   {videoId.toString() === SAMSUNG_MAIN_ID
                     ? SAMSUNG_BUDS_TITLE
@@ -127,7 +127,7 @@ const VideoTitle = styled.div`
   }
 `;
 
-const VideoThumnail = styled.img`
+const VideoThumbnail = styled.img`
   width: 100%;
   max-width: 500px;
   max-height: calc(500px * 0.56);
